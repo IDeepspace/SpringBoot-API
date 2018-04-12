@@ -1,4 +1,4 @@
-package com.springbootapi.demo;
+package com.springbootapi.demo.controller;
 
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,21 +15,21 @@ import java.util.List;
 public class EmployeeControlllor {
 
   @Autowired
-  private EmployeeRepository employeeRepository;
+  private com.springbootapi.demo.dataSource.EmployeeRepository employeeRepository;
 
   //查询所有employee列表
   @GetMapping(value = "/employees")
-  public List<Employee> employeeList() {
+  public List<com.springbootapi.demo.model.Employee> employeeList() {
     return employeeRepository.findAll();
   }
 
   //新增一名employee
   @PostMapping(value = "/employees")
-  public Employee employeeAdd(@RequestParam("name") String name,
+  public com.springbootapi.demo.model.Employee employeeAdd(@RequestParam("name") String name,
                             @RequestParam("age") Integer age,
                             @RequestParam("gender") String gender) {
 
-    Employee employee = new Employee();
+    com.springbootapi.demo.model.Employee employee = new com.springbootapi.demo.model.Employee();
 
     employee.setName(name);
     employee.setAge(age);
@@ -41,17 +41,17 @@ public class EmployeeControlllor {
 
   //查询一名employee
   @GetMapping(value = "/employees/{id}")
-  public Employee employeeFindOne(@PathVariable("id") Integer id) {
+  public com.springbootapi.demo.model.Employee employeeFindOne(@PathVariable("id") Integer id) {
     return employeeRepository.findById(id).get();
   }
 
   //更新一名employee的信息
   @PutMapping(value = "/employees/{id}")
-  public Employee employeeUpdate(@PathVariable("id") Integer id,
+  public com.springbootapi.demo.model.Employee employeeUpdate(@PathVariable("id") Integer id,
                                 @RequestParam("name") String name,
                                 @RequestParam("age") Integer age,
                                 @RequestParam("gender") String gender) {
-    Employee employee = new Employee();
+    com.springbootapi.demo.model.Employee employee = new com.springbootapi.demo.model.Employee();
     employee.setId(id);
     employee.setName(name);
     employee.setAge(age);
@@ -69,7 +69,7 @@ public class EmployeeControlllor {
 
   //通过年龄来查询employee列表
   @GetMapping(value = "/employees/age/{age}")
-  public List<Employee> employeeListByAge(@PathVariable("age") Integer age) {
+  public List<com.springbootapi.demo.model.Employee> employeeListByAge(@PathVariable("age") Integer age) {
     return employeeRepository.findByAge(age);
   }
 

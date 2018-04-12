@@ -1,4 +1,4 @@
-package com.springbootapi.demo;
+package com.springbootapi.demo.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
