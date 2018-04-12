@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PathVariable;
-
-import org.springframework.data.domain.Example;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.DeleteMapping;
 
 import java.util.List;
 
@@ -45,6 +45,20 @@ public class EmployeeControlllor {
     return employeeRepository.findById(id).get();
   }
 
-  //更新
-//  @org.springframework.web.bind.annotation.PutMapping
+  //更新一名employee的信息
+  @PutMapping(value = "/employees/{id}")
+  public Employee employeeUpdate(@PathVariable("id") Integer id,
+                                @RequestParam("name") String name,
+                                @RequestParam("age") Integer age,
+                                @RequestParam("gender") String gender) {
+    Employee employee = new Employee();
+    employee.setId(id);
+    employee.setName(name);
+    employee.setAge(age);
+    employee.setGender(gender);
+
+    return employeeRepository.save(employee);
+  }
+
+
 }
