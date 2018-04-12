@@ -67,6 +67,11 @@ public class EmployeeControlllor {
     employeeRepository.deleteById(id);
   }
 
+  //通过年龄来查询employee列表
+  @GetMapping(value = "/employees/age/{age}")
+  public List<Employee> employeeListByAge(@PathVariable("age") Integer age) {
+    return employeeRepository.findByAge(age);
+  }
 
 
 }
