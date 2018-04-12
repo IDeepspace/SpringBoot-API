@@ -38,8 +38,11 @@ public class EmployeeControlllor {
   }
 
 //  //查询一名employee
-//  @GetMapping(value = "/employees/${id}")
+//  @GetMapping("/employees/${id}")
 //  public Employee employeeFindOne(@PathVariable("id") Integer id) {
 //    return employeeRepository.getOne(id);
 //  }
+
+  //更新
+//  @org.springframework.web.bind.annotation.PutMapping
 }
