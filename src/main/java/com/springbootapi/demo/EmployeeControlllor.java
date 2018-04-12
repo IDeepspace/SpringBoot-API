@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import org.springframework.data.domain.Example;
+
 import java.util.List;
 
 @RestController
@@ -37,11 +39,11 @@ public class EmployeeControlllor {
 
   }
 
-//  //查询一名employee
-//  @GetMapping("/employees/${id}")
-//  public Employee employeeFindOne(@PathVariable("id") Integer id) {
-//    return employeeRepository.getOne(id);
-//  }
+  //查询一名employee
+  @GetMapping(value = "/employees/{id}")
+  public Employee employeeFindOne(@PathVariable("id") Integer id) {
+    return employeeRepository.findById(id).get();
+  }
 
   //更新
 //  @org.springframework.web.bind.annotation.PutMapping
