@@ -60,5 +60,13 @@ public class EmployeeControlllor {
     return employeeRepository.save(employee);
   }
 
+  //删除一名employee
+  @DeleteMapping(value = "/employees/{id}")
+  public void employeeDelete(@PathVariable("id") Integer id) {
+    System.out.println(id);
+    employeeRepository.deleteById(id);
+  }
+
+
 
 }
